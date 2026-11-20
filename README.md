@@ -60,7 +60,7 @@ took 234 ms, about **234 ns per call**, compared with 13 ms for doing `1 + 2` in
    is an interpreter step on a boxed Python object. In C, the same loop is a few
    machine instructions on raw `double`s in one contiguous block of memory.
 2. **Crossing into C has a fixed cost.** Each `ctypes` call converts Python objects
-   to C values and back. That's why you hand C a whole array once, instead of
+   to C values and back. That's why you pass a whole array to C once, instead of
    calling C once per element. NumPy follows the same rule: one call, one big loop in C.
 3. **`ctypes` trusts you about types.** It can't read the C header, so it assumes
    every argument and return value is an `int`. Without `restype = c_int64`,
